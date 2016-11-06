@@ -6,6 +6,8 @@ This rest api allows for adminstration of a kafka cluster.
 
 To build the admin api
 
+[![Build Status](https://travis-ci.org/craftsmenlabs/kafka-admin-rest-api.svg?branch=master)](https://travis-ci.org/craftsmenlabs/kafka-admin-rest-api)
+
 ```bash
 mvn clean install
 ```
