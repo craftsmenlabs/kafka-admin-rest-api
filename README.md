@@ -15,7 +15,7 @@ mvn clean install
 Running the application
 
 ```bash
-docker run -e ZOOKEEPER_URLS=localhost:2181 craftsmenlabs/kakfa-admin-rest-api
+docker run -p 8080:8080 -e ZOOKEEPER_URLS=localhost:2181 craftsmenlabs/kakfa-admin-rest-api
 ```
 
 Create a topic (example)

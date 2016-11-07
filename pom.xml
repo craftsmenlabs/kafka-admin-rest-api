@@ -30,6 +30,11 @@
         </developer>
     </developers>
 
+
+    <licenses>
+        <license>https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html</license>
+    </licenses>
+
     <dependencyManagement>
         <dependencies>
 
