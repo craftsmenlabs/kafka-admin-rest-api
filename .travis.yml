@@ -11,8 +11,8 @@ jdk:
 
 script:
   - mvn clean package
-  - docker build -t craftsmenlabs/kafka-admin-rest-api target/
+  - docker build -t craftsmenlabs/kafka-admin-rest-api:latest target/
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD2"
-  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then docker push craftsmenlabs/kafka-admin-rest-api; fi'
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then docker push craftsmenlabs/kafka-admin-rest-api:latest; fi'
