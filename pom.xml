@@ -205,7 +205,9 @@
 
                         <apiSource>
                             <springmvc>false</springmvc>
-                            <locations>com.sensordatex.kafka.rest.resource</locations>
+                            <locations>
+                                <location>com.sensordatex.kafka.rest.resource</location>
+                            </locations>
                             <schemes>http,https</schemes>
                             <basePath>/api</basePath>
                             <info>
