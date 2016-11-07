@@ -15,4 +15,4 @@ script:
 
 after_success:
   - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD2"
-  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then docker push craftsmenlabs/kafka-admin-rest-api:latest; fi'
+  - docker push craftsmenlabs/kafka-admin-rest-api:latest
