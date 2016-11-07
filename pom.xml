@@ -208,7 +208,9 @@
                             <locations>
                                 <location>com.sensordatex.kafka.rest.resource</location>
                             </locations>
-                            <schemes>http,https</schemes>
+                            <schemes>
+                                <scheme>http</scheme>
+                            </schemes>
                             <basePath>/api</basePath>
                             <info>
 
