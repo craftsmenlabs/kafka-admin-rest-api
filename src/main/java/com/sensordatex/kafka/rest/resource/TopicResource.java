@@ -65,4 +65,16 @@ public class TopicResource {
     public void createTopic(final Topic topic) {
         topicService.createTopic(topic);
     }
+
+
+    @ApiOperation(value = "Delete Kafka topic")
+    @ApiResponses(value = {
+            @ApiResponse(code = 204, message = "Topic is deleted"),
+            @ApiResponse(code = 404, message = "Topic is not found")
+    })
+    @GET
+    @Path("/{topicName}")
+    public void deleteTopic(final @PathParam("topicName") String topicName){
+        topicService.deleteTopic(topicName);
+    }
 }

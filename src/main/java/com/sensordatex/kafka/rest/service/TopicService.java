@@ -14,4 +14,6 @@ public interface TopicService {
     Set<String> getTopics();
 
     void createTopic(final Topic topic);
+
+    void deleteTopic(String topicName);
 }

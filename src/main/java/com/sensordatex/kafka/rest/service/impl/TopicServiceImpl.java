@@ -12,6 +12,7 @@ import scala.collection.JavaConversions;
 import java.util.Properties;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.stream.Stream;
 
 /**
  * Created by hylke on 06/11/2016.
@@ -31,7 +32,8 @@ public class TopicServiceImpl implements TopicService {
             final Topic topic = new Topic();
             topic.setName(topicMetadata.topic());
             topic.setPartitions(topicMetadata.partitionMetadata().size());
-            topic.setReplications(topicMetadata.partitionMetadata().get(0).replicas().size());
+            final int replicas = topicMetadata.partitionMetadata().stream().mapToInt(e -> e.replicas().size()).sum();
+            topic.setReplications(replicas);
             topic.setProperties(getTopicProperties(topicName));
             return topic;
         }
@@ -44,6 +46,14 @@ public class TopicServiceImpl implements TopicService {
 
     public void createTopic(final Topic topic) {
         AdminUtils.createTopic(zkUtils, topic.getName(), topic.getPartitions(), topic.getReplications(), topic.getProperties(), RackAwareMode.Disabled$.MODULE$);
+    }
+
+    @Override
+    public void deleteTopic(final String topicName) {
+        if (AdminUtils.topicExists(zkUtils, topicName)) {
+            AdminUtils.deleteTopic(zkUtils, topicName);
+        }
+        throw new UnknownTopicException(topicName);
     }
 
     private Properties getTopicProperties(final String topicName) {
