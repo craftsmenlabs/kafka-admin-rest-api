@@ -26,6 +26,7 @@ public class TopicServiceImpl implements TopicService {
         this.zkUtils = zkUtils;
     }
 
+    @Override
     public Topic getTopic(final String topicName) {
         if (AdminUtils.topicExists(zkUtils, topicName)) {
             final MetadataResponse.TopicMetadata topicMetadata = AdminUtils.fetchTopicMetadataFromZk(topicName, zkUtils);
@@ -40,10 +41,12 @@ public class TopicServiceImpl implements TopicService {
         throw new UnknownTopicException(topicName);
     }
 
+    @Override
     public Set<String> getTopics() {
         return new TreeSet<String>(JavaConversions.asJavaCollection(zkUtils.getAllTopics()));
     }
 
+    @Override
     public void createTopic(final Topic topic) {
         AdminUtils.createTopic(zkUtils, topic.getName(), topic.getPartitions(), topic.getReplications(), topic.getProperties(), RackAwareMode.Disabled$.MODULE$);
     }

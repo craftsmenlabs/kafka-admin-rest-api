@@ -72,7 +72,7 @@ public class TopicResource {
             @ApiResponse(code = 204, message = "Topic is deleted"),
             @ApiResponse(code = 404, message = "Topic is not found")
     })
-    @GET
+    @DELETE
     @Path("/{topicName}")
     public void deleteTopic(final @PathParam("topicName") String topicName){
         topicService.deleteTopic(topicName);
